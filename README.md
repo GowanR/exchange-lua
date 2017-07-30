@@ -19,7 +19,7 @@ This is the basic idea.
 `lua exchange.lua <ammout> <original exchange> <new exchange>`
 
 Currency types supported:
-*
+
 AUD
 BGN
 BRL
@@ -51,4 +51,4 @@ THB
 TRY
 ZAR
 EUR
-*
+
