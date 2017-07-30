@@ -68,8 +68,8 @@ assert(arg[3], "Please provide value to convert to.")
 local base = arg[2]
 local conversion = arg[3]
 
-function get_exchange(base)
-  r, e = http.request("http://api.fixer.io/latest?base=".. base)
+function get_exchange(base, conversion)
+  r, e = http.request("http://api.fixer.io/latest?symbols=" .. conversion .. "&base=".. base)
   assert(e == 200, "Bad http request: " .. e)
   t = json.decode(r)
   assert(not t["error"], "Error occured: " .. (t["error"] or "unknown."))
@@ -78,7 +78,7 @@ end
 
 
 function convert(base, value, coversion)
-  local rates = get_exchange(base)
+  local rates = get_exchange(base, conversion)
   assert(rates["rates"][conversion], "Conversion type not recognized.")
   return tonumber(rates["rates"][conversion]) * value or error("Unknown error!")
 end
